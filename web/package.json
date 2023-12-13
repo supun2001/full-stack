@@ -1,0 +1,20 @@
+{
+  "name": "group_13",
+  "version": "1.0.0",
+  "description": "full stack web for phone shop",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mean",
+    "angular",
+    "mongodb"
+  ],
+  "author": "group 13",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongose": "^0.0.2-security"
+  }
+}
