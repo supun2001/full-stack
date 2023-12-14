@@ -1,13 +1,15 @@
-const mongose = require('mongose');
-const Schema = mongose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    _id: { type: Schema.Type.OnjectId, auto: true },
+    _id: { type: Schema.Types.ObjectId, auto: true },
     name: { type: String, required: true },
-    contact: { type: String, required: true }
+    contact: { type: String, required: true },
+    address: { type: String, required: true },
+    postlID: { type: String, required: true }
 }, {
-    versionkey: false
-})
+    versionKey: false
+});
 
-const user = mongose.model('users', userSchema);
-module.exports = user;
+const User = mongoose.model('users', userSchema);
+module.exports = User;
