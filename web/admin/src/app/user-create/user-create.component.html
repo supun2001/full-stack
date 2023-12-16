@@ -1,0 +1,51 @@
+<h2 [hidden]="!(user._id==undefined)">Create User</h2>
+<h2 [hidden]="!(user._id!=undefined)">Edit User</h2>
+<hr>
+<div class="col-sm-5">
+    <form #form="ngForm" (ngSubmit)="SaveData(form)">
+
+        <!-- Name -->
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="Name" #Name="ngModel" [(ngModel)]="user.name" placeholder="Jhone wick" required
+                class="form-control" />
+            <div *ngIf="Name.errors && form.submitted" class="text-danger">
+                Please enter the name
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="form-group">
+            <label>Contact Number</label>
+            <input type="number" name="contact" #Contact="ngModel" [(ngModel)]="user.contact" required
+                class="form-control" placeholder="07x-xxxxxxx" />
+            <div *ngIf="Contact.errors && form.submitted" class="text-danger">
+                Please enter the Contact number
+            </div>
+        </div>
+
+        <!-- Address -->
+        <div class="form-group">
+            <label>Address</label>
+            <textarea name="address" #Address="ngModel" [(ngModel)]="user.address" required class="form-control"
+                placeholder="Colombo,Sri lanka"></textarea>
+            <div *ngIf="Address.errors && form.submitted" class="text-danger">
+                Please enter the address
+            </div>
+        </div>
+
+        <!-- PostleCode -->
+        <div class="form-group">
+            <label>Postle Code</label>
+            <input type="number" name="postleCode" #PostleCode="ngModel" [(ngModel)]="user.postlID" placeholder="10320"
+                required class="form-control" />
+            <div *ngIf="PostleCode.errors && form.submitted" class="text-danger">
+                Please enter the Postle Code
+            </div>
+        </div>
+        <br>
+        <div>
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
