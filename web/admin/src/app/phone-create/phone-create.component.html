@@ -1,0 +1,61 @@
+<h2 [hidden]="!(phone._id==undefined)">Create Phone</h2>
+<h2 [hidden]="!(phone._id!=undefined)">Edit Phone</h2>
+<hr>
+<div class="col-sm-5">
+    <form #form="ngForm" (ngSubmit)="SaveData(form)">
+
+        <!-- Name -->
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="Name" #Name="ngModel" [(ngModel)]="phone.p_name" placeholder="iPhone 15" required
+                class="form-control" />
+            <div *ngIf="Name.errors && form.submitted" class="text-danger">
+                Please enter the phone name
+            </div>
+        </div>
+
+        <!-- Price -->
+        <div class="form-group">
+            <label>Price</label>
+            <input type="number" name="price" #Price="ngModel" [(ngModel)]="phone.p_price" required class="form-control"
+                placeholder="150000" />
+            <div *ngIf="Price.errors && form.submitted" class="text-danger">
+                Please enter the Price
+            </div>
+        </div>
+
+        <!-- Image Link -->
+        <div class="form-group">
+            <label>Image Link</label>
+            <textarea name="imageLink" #ImageLink="ngModel" [(ngModel)]="phone.p_imgLink" required class="form-control"
+                placeholder="http://xxxxxx"></textarea>
+            <div *ngIf="ImageLink.errors && form.submitted" class="text-danger">
+                Please enter the Image Link
+            </div>
+        </div>
+
+        <!-- Quantity -->
+        <div class="form-group">
+            <label>Quantity</label>
+            <input type="number" name="Quantity" #Quantity="ngModel" [(ngModel)]="phone.p_qunittiy" placeholder="100"
+                required class="form-control" />
+            <div *ngIf="Quantity.errors && form.submitted" class="text-danger">
+                Please enter the Quantity
+            </div>
+        </div>
+
+        <!-- Decription -->
+        <div class="form-group">
+            <label>Description</label>
+            <input type="text" name="Description" #Description="ngModel" [(ngModel)]="phone.p_desc"
+                placeholder="Brand new phhone" required class="form-control" />
+            <div *ngIf="Description.errors && form.submitted" class="text-danger">
+                Please enter the Description
+            </div>
+        </div>
+        <br>
+        <div>
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </form>
+</div>

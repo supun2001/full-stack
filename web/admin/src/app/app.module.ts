@@ -8,12 +8,16 @@ import { UserCreateComponent } from './user-create/user-create.component';
 import { UserService } from './service/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { PhoneComponent } from './phone/phone.component';
+import { PhoneCreateComponent } from './phone-create/phone-create.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
-    UserCreateComponent
+    UserCreateComponent,
+    PhoneComponent,
+    PhoneCreateComponent
   ],
   imports: [
     BrowserModule,

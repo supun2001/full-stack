@@ -1,0 +1,31 @@
+<h1>Users List</h1>
+<hr>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Index</th>
+            <th scope="col">Phone Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Image</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Description</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of phones;let i=index">
+            <td>{{i+1}}</td>
+            <td>{{item.p_name}}</td>
+            <td>Rs.{{item.p_price}}</td>
+            <td><img [src]="item.p_imgLink" alt="" srcset=""></td>
+            <td>{{item.p_qunittiy}}</td>
+            <td>{{item.p_desc}}</td>
+            <td>
+
+                <a [routerLink]="['/editPhone',item._id]" class="btn btn-success">Edit</a> &nbsp;
+                <a href="javascript:void(0)" class="btn btn-danger" (click)="deletePhone(item._id)">Delete</a>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
