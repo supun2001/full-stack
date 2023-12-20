@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { PhoneComponent } from './phone/phone.component';
 import { PhoneCreateComponent } from './phone-create/phone-create.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { EmployeeCreateComponent } from './employee-create/employee-create.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { PhoneCreateComponent } from './phone-create/phone-create.component';
     UsersComponent,
     UserCreateComponent,
     PhoneComponent,
-    PhoneCreateComponent
+    PhoneCreateComponent,
+    EmployeeComponent,
+    EmployeeCreateComponent
   ],
   imports: [
     BrowserModule,

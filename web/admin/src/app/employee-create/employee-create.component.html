@@ -1,0 +1,41 @@
+<h2 [hidden]="!(employee._id==undefined)">Create Employee</h2>
+<h2 [hidden]="!(employee._id!=undefined)">Edit Employee</h2>
+<hr>
+<div class="col-sm-5">
+    <form #form="ngForm" (ngSubmit)="SaveData(form)">
+
+        <!-- Name -->
+        <div class="form-group">
+            <label>Employee Name</label>
+            <input type="text" name="Name" #Name="ngModel" [(ngModel)]="employee.e_name" placeholder="Tony Stark"
+                required class="form-control" />
+            <div *ngIf="Name.errors && form.submitted" class="text-danger">
+                Please enter the name
+            </div>
+        </div>
+
+        <!-- Number -->
+        <div class="form-group">
+            <label>Number</label>
+            <input type="number" name="eNum" #ENum="ngModel" [(ngModel)]="employee.e_num" required class="form-control"
+                placeholder="075123456" />
+            <div *ngIf="ENum.errors && form.submitted" class="text-danger">
+                Please enter the Phone number
+            </div>
+        </div>
+
+        <!-- Employee Address -->
+        <div class="form-group">
+            <label>Employee Address</label>
+            <textarea name="eAdd" #EAdd="ngModel" [(ngModel)]="employee.e_add" required class="form-control"
+                placeholder="Colombo 15, Sri lanka"></textarea>
+            <div *ngIf="EAdd.errors && form.submitted" class="text-danger">
+                Please enter the Employee address
+            </div>
+        </div>
+        <br>
+        <div>
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </form>
+</div>

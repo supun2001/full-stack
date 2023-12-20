@@ -1,0 +1,26 @@
+<h1>Employee List</h1>
+<hr>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Index</th>
+            <th scope="col">Employee Name</th>
+            <th scope="col">Contact Number</th>
+            <th scope="col">Employee Address</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of employee;let i=index">
+            <td>{{i+1}}</td>
+            <td>{{item.e_name}}</td>
+            <td>{{item.e_num}}</td>
+            <td>{{item.e_add}}</td>
+            <td>
+                <a [routerLink]="['/editEmployee',item._id]" class="btn btn-success">Edit</a> &nbsp;
+                <a href="javascript:void(0)" class="btn btn-danger" (click)="deleteEmp(item._id)">Delete</a>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
