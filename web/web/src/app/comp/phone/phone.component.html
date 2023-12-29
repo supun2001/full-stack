@@ -1,0 +1,37 @@
+<div *ngIf="phone" class="grid-container">
+
+    <!-- Image -->
+    <div class="grid-item">
+        <img [src]="phone.p_imgLink" alt="">
+    </div>
+
+    <div class="grid-item">
+        <!-- Name -->
+        <h2>{{ phone.p_name }}</h2>
+
+        <!-- Price -->
+        <p class="topics">Price</p>
+        <p>{{ phone.p_price | currency: 'Rs.' }}</p>
+
+        <!-- Quantity -->
+        <p class="topics">In Stock</p>
+        <p>{{ phone.p_qunittiy && +phone.p_qunittiy > 0 ? phone.p_qunittiy : 'Out of Stock' }}</p>
+
+
+        <!-- Increment and decrement -->
+        <p class="topics">Quantity</p>
+        <button mat-button color="primary" (click)="counter('sub')">-</button> {{qty}} <button mat-button
+            color="primary" (click)="counter('add')">+</button>
+
+        <!-- User price -->
+        <p class="topics">Your price</p>
+        <p class="netPrice">{{netPrice()| currency: 'Rs.'}}</p>
+
+        <button mat-raised-button color="primary" (click)="buy()">Buy</button>
+    </div>
+
+    <!-- Description -->
+    <div class="grid-item">
+        <p>{{ phone.p_desc }}</p>
+    </div>
+</div>

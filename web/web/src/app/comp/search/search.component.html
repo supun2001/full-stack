@@ -1,0 +1,24 @@
+<div class="container">
+    <mat-form-field class="example-full-width">
+        <mat-label>Search</mat-label>
+        <input matInput placeholder="iPhone 15" [(ngModel)]="searchQuery" (input)="onSearch()">
+    </mat-form-field>
+
+    <div *ngIf="searchResults.length > 0; else noResults">
+        <h2>Are you searching for:</h2>
+        <ul>
+            <ng-container *ngFor="let result of searchResults">
+                <button mat-button [routerLink]="['/phone', result._id]" (click)="onSearchResultClick(result)">
+                    <li>
+                        {{ result.p_name }}
+                        <span *ngIf="false">{{ result._id }}</span>
+                    </li>
+                </button>
+            </ng-container>
+        </ul>
+    </div>
+
+    <ng-template #noResults>
+        <p>No matching content found.</p>
+    </ng-template>
+</div>
