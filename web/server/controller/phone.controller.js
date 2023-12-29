@@ -40,5 +40,16 @@ router.get('/', (req, res) => {
         res.status(500).send(err);
     })
 })
+router.get('/search/:query', (req, res) => {
+    const query = req.params.query;
+
+    phone.find({ p_name: { $regex: query, $options: 'i' } })
+        .then(docs => {
+            res.send(docs);
+        })
+        .catch(err => {
+            res.status(500).send(err);
+        });
+});
 
 module.exports = router;
