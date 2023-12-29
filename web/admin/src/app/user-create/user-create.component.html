@@ -14,6 +14,16 @@
             </div>
         </div>
 
+        <!-- Password -->
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="Password" #Password="ngModel" [(ngModel)]="user.password" placeholder="123"
+                required class="form-control" />
+            <div *ngIf="Password.errors && form.submitted" class="text-danger">
+                Please enter the password
+            </div>
+        </div>
+
         <!-- Contact -->
         <div class="form-group">
             <label>Contact Number</label>

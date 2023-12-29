@@ -20,6 +20,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { FooterComponent } from './comp/footer/footer.component';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { SignupComponent } from './comp/signup/signup.component';
 
 
 
@@ -32,6 +33,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     PaymentComponent,
     SearchComponent,
     FooterComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,

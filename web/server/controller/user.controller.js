@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
 }).put('/:id', (req, res) => {
     let id = req.params.id;
     const obj = req.body;
-    user.findByIdAndUpdate(id, { name: obj.name, contact: obj.contact, address: obj.address, postlID: obj.postlID })
+    user.findByIdAndUpdate(id, { name: obj.name, password: obj.password, contact: obj.contact, address: obj.address, postlID: obj.postlID })
         .then(doc => {
             res.status(200).send(obj);
         }).catch(err => {
