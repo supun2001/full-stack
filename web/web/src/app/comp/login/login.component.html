@@ -1,28 +1,31 @@
 <div class="center-container">
 
-    <form class="example-form">
-        <h1>Login</h1>
+    <form #form="ngForm" (ngSubmit)="login(form)">
+
+        <!-- Name -->
         <mat-form-field class="example-full-width">
-            <mat-label>Username</mat-label>
-            <input matInput placeholder="User">
+            <mat-label>Name</mat-label>
+            <input matInput type="text" name="Name" #Name="ngModel" [(ngModel)]="user.name" placeholder="Jhone wick"
+                required class="form-control" />
+            <div *ngIf="Name.errors && form.submitted" class="text-danger">
+                Please enter the name
+            </div>
         </mat-form-field>
 
+
+
+        <!-- Password -->
         <mat-form-field class="example-full-width">
-            <mat-label>Contact number</mat-label>
-            <input type="number" matInput placeholder="07x-xxxxxxxx">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" name="Password" #Password="ngModel" [(ngModel)]="user.password"
+                placeholder="123" required class="form-control" />
+            <div *ngIf="Password.errors && form.submitted" class="text-danger">
+                Please enter the password
+            </div>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width">
-            <mat-label>Address</mat-label>
-            <input matInput placeholder="Colombo, Sri Lanka">
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-            <mat-label>Postle ID</mat-label>
-            <input type="number" matInput placeholder="10320">
-        </mat-form-field>
-
-        <button mat-raised-button color="primary">Login</button>
+        <button mat-raised-button type="submit" color="primary">Login</button> <br>
+        New member? <button mat-button color="primary" [routerLink]="['/signup']">Sign up</button>
     </form>
-    New member? <button mat-raised-button color="primary" [routerLink]="['/signup']">Sign up</button>
+
 </div>

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+
 const user = require('../models/user.models');
 
 router.get('/', (req, res) => {
@@ -39,6 +40,26 @@ router.get('/', (req, res) => {
     }).catch(err => {
         res.status(500).send(err);
     })
-})
+}).post('/login', async (req, res) => {
+    const { name, password } = req.body;
+
+    try {
+        const existingUser = await user.findOne({ name });
+
+        if (!existingUser) {
+            return res.status(401).json({ message: 'Invalid username or password' });
+        }
+
+        if (existingUser.password !== password) {
+            return res.status(401).json({ message: 'Invalid username or password' });
+        }
+        // Authentication successful
+        res.status(200).json({ message: 'Login successful' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
 
 module.exports = router;

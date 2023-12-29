@@ -12,9 +12,17 @@ headers: HttpHeaders;
     constructor(private client: HttpClient) {
     this.headers = new HttpHeaders({ "content-type": "application/json" });
   }
-    GetUser(id: string): Observable<User> {
-    return this.client.get<User>(env.apiUrl + "/user/" + id);
-  }
+  login(username: string, password: string): Observable<HttpResponse<any>> {
+  const credentials = { username, password };
+
+  return this.client.post<HttpResponse<any>>(env.apiUrl + '/user/login',JSON.stringify(credentials),
+    {
+      headers: this.headers,
+      observe: 'response',
+    }
+  );
+}
+
 
   AddUser(user: User): Observable<HttpResponse<any>> {
     return this.client.post<HttpResponse<any>>(env.apiUrl + "/user", JSON.stringify(user), {
