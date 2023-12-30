@@ -12,15 +12,15 @@ headers: HttpHeaders;
     constructor(private client: HttpClient) {
     this.headers = new HttpHeaders({ "content-type": "application/json" });
   }
-  login(username: string, password: string): Observable<HttpResponse<any>> {
-  const credentials = { username, password };
+  Login(username: string, password: string): Observable<HttpResponse<any>> {
+    const credentials = { name:username, password:password };
 
-  return this.client.post<HttpResponse<any>>(env.apiUrl + '/user/login',JSON.stringify(credentials),
-    {
-      headers: this.headers,
-      observe: 'response',
-    }
-  );
+    return this.client.post<HttpResponse<any>>(env.apiUrl + '/user/login',JSON.stringify(credentials),
+      {
+        headers: this.headers,
+        observe: 'response',
+      }
+    );
 }
 
 

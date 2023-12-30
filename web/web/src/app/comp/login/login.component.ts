@@ -1,4 +1,6 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -10,7 +12,7 @@ export class LoginComponent {
 user = { name: '', password: '' }; // Assuming you have a form model
   errorMessage = '';
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService,private router:Router) {}
 
   login(form: any): void {
     if (form.invalid) {
@@ -21,16 +23,17 @@ user = { name: '', password: '' }; // Assuming you have a form model
 
     const { name, password } = this.user;
 
-    this.userService.login(name, password).subscribe(
+    this.userService.Login( name, password).subscribe(
       (response) => {
-        // Handle successful login response
-        console.log('Login successful', response);
-        // Optionally, you can navigate to a different page upon successful login
+        this.router.navigate(['/']);
       },
-      (error) => {
-        // Handle login error
+      (error: HttpErrorResponse) => {
+        if (error.status === 401) {
+          this.errorMessage = 'Invalid username or password';
+        } else {
+          this.errorMessage = 'An error occurred. Please try again later.';
+        }
         console.error('Login error', error);
-        this.errorMessage = 'Invalid username or password';
       }
     );
   }
